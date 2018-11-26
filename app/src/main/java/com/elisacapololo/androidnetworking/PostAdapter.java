@@ -26,7 +26,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         Post post = posts[position];
         postViewHolder.postName.setText(post.name);
         postViewHolder.postMessage.setText(post.message);
-        Picasso.get().load(post.profileUrl).into(postViewHolder.postImage);
+        Picasso.get().load(post.profileImage).into(postViewHolder.postImage);
     }
 
     @Override

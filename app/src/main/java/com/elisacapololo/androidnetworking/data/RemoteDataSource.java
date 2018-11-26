@@ -1,5 +1,7 @@
 package com.elisacapololo.androidnetworking.data;
 
+import android.support.annotation.NonNull;
+
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -9,7 +11,6 @@ import com.android.volley.toolbox.NoCache;
 import com.elisacapololo.androidnetworking.PostList;
 
 public class RemoteDataSource implements DataSource {
-
     private final String mUrl;
     private final RequestQueue mRequestQueue;
 
@@ -19,8 +20,9 @@ public class RemoteDataSource implements DataSource {
         mRequestQueue.start();
     }
 
+
     @Override
-    public void getPosts(final GetPostsCallback getPostsCallback) {
+    public void getPosts(@NonNull final GetPostsCallback getPostsCallback) {
         GsonRequest<PostList> gsonRequest = new GsonRequest<>(mUrl, PostList.class, null, new Response.Listener<PostList>() {
             @Override
             public void onResponse(PostList list) {
@@ -36,4 +38,5 @@ public class RemoteDataSource implements DataSource {
 
         mRequestQueue.add(gsonRequest);
     }
+
 }
